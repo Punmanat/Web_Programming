@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile</title>
+    <style>
+        table,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+
+        td,
+        th {
+            text-align: center;
+        }
+
+        ul,
+        li,
+        ol {
+            list-style-position: inside;
+        }
+        input[type='submit']{
+            font-size: 16px;
+            width: 100px;
+            height: 100px;
+        }
+        #picture{
+            background-color: #BD8E62;
+        }
+        .b{
+            background-color: #D5D2C1;
+        }
+        .b1{
+            background-color: #A46843;
+        }
+    </style>
+</head>
+
+<form action="https://www.w3schools.com/action_page.php">
+    <h1 style="text-align:center;">My Profile</h1>
+    <hr width=50% style='margin-bottom:20px;'>
+    <table width="100%">
+        <tr>
+            <td id='picture' rowspan="3">
+                <input type="file">
+            </td>
+            <td class='b'>
+                <div>
+                    <label for="">Fullname : </label>
+                    <input type="text" name='fname'>
+                </div>
+                <div>
+                    <label for="">Lastname : </label>
+                    <input type="text" name='lname'>
+                </div>
+            </td>
+        </tr>
+        <tr class='b'>
+            <td>Gender :
+                <input type="radio" name='gender' value="Male"> Male
+                <input type="radio" name='gender' value="Female"> Female
+            </td>
+        </tr>
+        <tr class='b'>
+            <td>Age :
+                <input type="text" name='age'>
+            </td>
+        </tr>
+        <tr> 
+            <td colspan='4'>
+                <table width='100%'>
+                    <tr>
+                        <th>Level</th>
+                        <th>School</th>
+                    </tr>
+                    <tr>
+                        <td>Primary school</td>
+                        <td><input type="text" name='pschool' placeholder="Sarasas Pittaya School"></td>
+                    </tr>
+                    <tr>
+                        <td>Secondary school</td>
+                        <td><input type="text" name='sschool' placeholder="Watsuthiwararam School"></td>
+                    </tr>
+                    <tr>
+                        <td>University</td>
+                        <td><input type="text" name='university' placeholder="KMITL"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <h4>Favorite foods</h4>
+                <ul>
+                    <li><input type="text" name='menu1' placeholder="menu1"></li>
+                    <li><input type="text" name='menu2' placeholder="menu2"></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <h4>Favorite movies</h4>
+                <ol>
+                    <li><a href="https://www.imdb.com/title/tt4154756/?ref_=nv_sr_3">Avenger Infinity War</a></li>
+                    <li><a href="https://www.imdb.com/title/tt0499549/?ref_=nv_sr_6">Avartar</a></li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+    <div style="text-align:center; margin-top:20px;">
+            <input type="submit" name="submit">
+    </div>
+    <br>
+    <br>
+</form>
+</body>
+
+</html>
