@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="app1">{{message}}</div>
+    <!-- <div id="app1">{{message}}</div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -20,6 +20,58 @@
                 message: 'hello world',
             }
         });
+    </script> -->
+
+
+    <!-- <p>A paragraph with a <button>button</button>.</ p>
+        <script>
+            let para = document.querySelector("p");
+            let button = document.querySelector("button"); 
+            para.addEventListener("mousedown", () => {
+                console.log("Handler for paragraph.");
+            });
+            button.addEventListener("mousedown", event => {
+                console.log(event);
+                console.log("Handler for button.");
+                if (event.button == 0) event.stopPropagation();
+            });
+        </script> -->
+
+    <!-- <a href="https://developer.mozilla.org/">MDN</a>
+    <script>
+        let link = document.querySelector("a"); 
+        link.addEventListener("click", event => {
+            console.log("Nope."); 
+            event.preventDefault();
+        });
+    </script> -->
+
+    <div id="example">
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message:
+            "{{ reversedMessage }}"
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            data: {
+                message: 'Hello',
+                reversedMessage:null,
+            },
+            methods: {
+                reversedMessage: function () {
+                    return this.message.split('').reverse().join('')
+                }
+            },
+            computed: {
+                reversedMessage: function () {
+                    return this.message.split('').reverse().join('')
+                }
+            }
+        })
     </script>
 </body>
 
