@@ -1,219 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+  </head>
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
-</head>
-
-<body>
-  <div id="app1">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h2>My Blog Posts</h2>
-        </div>
-        <div class="col-md-6">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1" @keyup='checkKey'>Search</span>
+  <body>
+    <div id="app1">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>My Blog Posts</h2>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text"
+                  id="basic-addon1"
+                  @keyup="checkKey"
+                  >Search</span
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                v-model="searchValue"
+                placeholder="Search post"
+                aria-label="search"
+                aria-describedby="basic-addon1"
+              />
             </div>
-            <input type="text" class="form-control" placeholder="Search post" aria-label="search"
-              aria-describedby="basic-addon1">
           </div>
         </div>
-      </div>
 
-      <div class="alert alert-primary" role="alert">
-        Total likes: {{totalLikes}}
-      </div>
-      <div class="alert alert-danger" role="alert" v-show="tooManyPost">
-        You post too many posts. Please stop!!!
-      </div>
-      <div class="row">
-        <div class="col-md-4" v-for="blog in blogs">
-          <div class="card my-3" @click="changeBGColor(blog)" :class="{'bg-dark':blog.isActive, 'text-white':blog.isActive}">
-            <img :src="blog.image" class="card-img-top img-fluid" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">
-                {{ blog.title }}
-                <span class="badge badge-success ml-5">Likes: {{blog.likes}}</span>
-              </h5>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.<br />
-                <small class="text-muted">Create By: {{blog.createBy}}</small>
-                <small class="text-muted ml-5">Create Date: {{blog.createDate}}</small>
-              </p>
-              <!--<button class="btn btn-primary">Go to my page</button>-->
-              <button class="btn btn-success" @click.stop="blog.likes++">I like this!</button>
-              <button class="btn btn-info" @click.stop="showComment(blog)">Show comment...</button>
-              <div class="card mt-2 text-dark" v-for="comment in blog.comments" v-show="blog.isShow">
-                <div class="card-body">
-                  <h6 class="card-title">Comment</h6>
-                  <p class="card-text">
-                    {{comment.text}}<br />
-                    <small class="text-muted">Create By: {{comment.createBy}}</small>
-                    <small class="text-muted ml-5">Create Date:</small>
-                  </p>
-                </div>
-              </div>
-            </div>
+        <div class="alert alert-primary" role="alert">
+          Total likes: {{ totalLikes }}
+        </div>
+        <div class="alert alert-danger" role="alert" v-show="tooManyPost">
+          You post too many posts. Please stop!!!
+        </div>
+        <div class="row">
+          <!-- <div class="col-md-4" v-for="blog in blogSearchResult">
+            <div
+              class="card my-3"
+              @click="changeBGColor(blog)"
+              :class="{'bg-dark':blog.isActive, 'text-white':blog.isActive}"
+            > -->
+              <!-- <img :src="blog.image" class="card-img-top img-fluid" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ blog.title }}
+                  <span class="badge badge-success ml-5"
+                    >Likes: {{ blog.likes }}</span
+                  >
+                </h5> -->
+                <!-- <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.<br />
+                  <small class="text-muted"
+                    >Create By: {{ blog.createBy }}</small
+                  >
+                  <small class="text-muted ml-5"
+                    >Create Date: {{ blog.createDate }}</small
+                  >
+                </p> -->
+                <!--<button class="btn btn-primary">Go to my page</button>-->
+                <!-- <button class="btn btn-success" @click.stop="blog.likes++">
+                  I like this!
+                </button>
+                <button class="btn btn-info" @click.stop="showComment(blog)">
+                  Show comment...
+                </button>
+                <div
+                  class="card mt-2 text-dark"
+                  v-for="comment in blog.comments"
+                  v-show="blog.isShow"
+                >
+                  <div class="card-body">
+                    <h6 class="card-title">Comment</h6>
+                    <p class="card-text">
+                      {{ comment.text }}<br />
+                      <small class="text-muted"
+                        >Create By: {{ comment.createBy }}</small
+                      >
+                      <small class="text-muted ml-5">Create Date:</small>
+                    </p> -->
+                  <!-- </div> -->
+                <!-- </div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+            <card-blog v-for="blog in blogSearchResult" :blog="blog" @show-comment="showComment(blog)" @add-like="blog.likes++"></card-blog>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
-  <script>
-    var vm = new Vue({
-      el: "#app1",
-      data: {
-        blogs: [
-          {
-            isActive:false,
-            id: 1,
-            isSerch:true,
-            title: "Hello World!",
-            content: "I love Vue.js. It is so cool and easy!",
-            createBy: "Bundit",
-            createDate: new Date().toLocaleString(),
-            isShow:false,
-            image:
-              "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
-            fb: "https://vuejs.org",
-            likes: 0,
-            comments: [
-              { text: "Yes I agree!", likes: 0, createBy: "Jack" },
-              { text: "Could not agree more!", likes: 0, createBy: "John" }
-            ]
-          },
-          {
-            isSerch:true,
-            isActive:false,
-            id: 2,
-            title: "Hello 12345!",
-            content:
-              "An sincerity so extremity he additions. Her yet there truth merit. Mrs all projecting favourable now unpleasing. Son law garden chatty temper. Oh children provided to mr elegance marriage strongly. Off can admiration prosperous now devonshire diminution law.",
-            createBy: "Job",
-            createDate: new Date().toLocaleString(),
-            isShow:false,
-            image:
-              "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
-            fb: "https://vuejs.org",
-            likes: 0,
-            comments: [
-              {
-                text: "He oppose at thrown desire of no.",
-                likes: 0,
-                createBy: "Jack"
-              },
-              { text: "Noooooo!", likes: 0, createBy: "John" },
-              {
-                text:
-                  "Announcing impression unaffected day his are unreserved indulgence.",
-                likes: 0,
-                createBy: "John"
-              }
-            ]
-          },
-          {
-            isSerch:true,
-            isActive:false,
-            id: 3,
-            title: "Hello World!",
-            content: "I love Vue.js. It is so cool and easy!",
-            createBy: "Bundit",
-            createDate: new Date().toLocaleString(),
-            isShow:false,
-            image:
-              "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
-            fb: "https://vuejs.org",
-            likes: 0,
-            comments: [{ text: "Yes I agree!", likes: 0, createBy: "Jack" }]
-          },
-          {
-            isSerch:true,
-            isActive:false,
-            id: 4,
-            title: "Bah bah bah...",
-            content:
-              "Folly words widow one downs few age every seven. If miss part by fact he park just shew.",
-            createBy: "Job",
-            createDate: new Date().toLocaleString(),
-            isShow:false,
-            image:
-              "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
-            fb: "https://vuejs.org",
-            likes: 0,
-            comments: [
-              { text: "Yes I agree!", likes: 0, createBy: "Jack" },
-              { text: "Could not agree more!", likes: 0, createBy: "John" },
-              { text: "Yes I agree!", likes: 0, createBy: "Job" },
-              { text: "Could not agree more!", likes: 0, createBy: "John" }
-            ]
-          },
-          {
-            isSerch:true,
-            isActive:false,
-            id: 5,
-            title: "Hey hey hey!",
-            content:
-              "Was certainty remaining engrossed applauded sir how discovery. Settled opinion how enjoyed greater joy adapted too shy. Now properly surprise expenses interest nor replying she she.",
-            createBy: "Bundit",
-            createDate: new Date().toLocaleString(),
-            isShow:false,
-            image:
-              "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
-            fb: "https://vuejs.org",
-            likes: 10,
-            comments: [
-              { text: "Yes I agree!", likes: 0, createBy: "Jack" },
-              { text: "Could not agree more!", likes: 0, createBy: "John" }
-            ]
-          }
-        ],
-        selects: [],
-        tooManyPost: false
-      },
-      methods: {
-        changeBGColor(blog) {
-          blog.isActive = !blog.isActive
-          console.log('change bg color')
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+    <script src="card-blog.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app1",
+        data: {
+          searchValue: "",
+          blogs: [
+            {
+              isActive: false,
+              id: 1,
+              isSerch: true,
+              title: "Hello World!",
+              content: "I love Vue.js. It is so cool and easy!",
+              createBy: "Bundit",
+              createDate: new Date().toLocaleString(),
+              isShow: false,
+              image:
+                "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
+              fb: "https://vuejs.org",
+              likes: 0,
+              comments: [
+                { text: "Yes I agree!", likes: 0, createBy: "Jack" },
+                { text: "Could not agree more!", likes: 0, createBy: "John" }
+              ]
+            },
+            {
+              isSerch: true,
+              isActive: false,
+              id: 2,
+              title: "Hello 12345!",
+              content:
+                "An sincerity so extremity he additions. Her yet there truth merit. Mrs all projecting favourable now unpleasing. Son law garden chatty temper. Oh children provided to mr elegance marriage strongly. Off can admiration prosperous now devonshire diminution law.",
+              createBy: "Job",
+              createDate: new Date().toLocaleString(),
+              isShow: false,
+              image:
+                "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
+              fb: "https://vuejs.org",
+              likes: 0,
+              comments: [
+                {
+                  text: "He oppose at thrown desire of no.",
+                  likes: 0,
+                  createBy: "Jack"
+                },
+                { text: "Noooooo!", likes: 0, createBy: "John" },
+                {
+                  text:
+                    "Announcing impression unaffected day his are unreserved indulgence.",
+                  likes: 0,
+                  createBy: "John"
+                }
+              ]
+            },
+            {
+              isSerch: true,
+              isActive: false,
+              id: 3,
+              title: "Hello World!",
+              content: "I love Vue.js. It is so cool and easy!",
+              createBy: "Bundit",
+              createDate: new Date().toLocaleString(),
+              isShow: false,
+              image:
+                "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
+              fb: "https://vuejs.org",
+              likes: 0,
+              comments: [{ text: "Yes I agree!", likes: 0, createBy: "Jack" }]
+            },
+            {
+              isSerch: true,
+              isActive: false,
+              id: 4,
+              title: "Bah bah bah...",
+              content:
+                "Folly words widow one downs few age every seven. If miss part by fact he park just shew.",
+              createBy: "Job",
+              createDate: new Date().toLocaleString(),
+              isShow: false,
+              image:
+                "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
+              fb: "https://vuejs.org",
+              likes: 0,
+              comments: [
+                { text: "Yes I agree!", likes: 0, createBy: "Jack" },
+                { text: "Could not agree more!", likes: 0, createBy: "John" },
+                { text: "Yes I agree!", likes: 0, createBy: "Job" },
+                { text: "Could not agree more!", likes: 0, createBy: "John" }
+              ]
+            },
+            {
+              isSerch: true,
+              isActive: false,
+              id: 5,
+              title: "Hey hey hey!",
+              content:
+                "Was certainty remaining engrossed applauded sir how discovery. Settled opinion how enjoyed greater joy adapted too shy. Now properly surprise expenses interest nor replying she she.",
+              createBy: "Bundit",
+              createDate: new Date().toLocaleString(),
+              isShow: false,
+              image:
+                "https://pbs.twimg.com/profile_images/875996174305472512/upM71pVR_400x400.jpg",
+              fb: "https://vuejs.org",
+              likes: 10,
+              comments: [
+                { text: "Yes I agree!", likes: 0, createBy: "Jack" },
+                { text: "Could not agree more!", likes: 0, createBy: "John" }
+              ]
+            }
+          ],
+          selects: [],
+          tooManyPost: false
         },
-        showComment(blog) {
-          blog.isShow = !blog.isShow
-          console.log('show comment')
+        methods: {
+          changeBGColor(blog) {
+            blog.isActive = !blog.isActive;
+            console.log("change bg color");
+          },
+          showComment(blog) {
+            blog.isShow = !blog.isShow;
+            console.log("show comment");
+          },
+          checkKey() {
+            console.log();
+          }
         },
-        checkKey(){
-          console.log()
-        }
-      },
-      computed: {
-        totalLikes : function(){
-          let sum = 0
-          for(let i=0;i<this.blogs.length;i++){
-            sum+= this.blogs[i].likes
+        computed: {
+          totalLikes: function() {
+            let sum = 0;
+            for (let i = 0; i < this.blogs.length; i++) {
+              sum += this.blogs[i].likes;
+            }
+            return sum;
+          },
+          blogSearchResult: function() {
+            let self = this
+            return this.blogs.filter(function(blog) {
+              let result = self.searchValue.toLowerCase();
+              let isMatchTitle = blog.title.toLowerCase().includes(result);
+              //console.log(isMatchTitle);
+              return isMatchTitle;
+            });
           }
-          return sum
-        }
-
-      },
-      watch: {
-        blogs:function(value){
-          console.log({value});
-          if(value.length > 3){
-            this.tooManyPost = true;
+        },
+        watch: {
+          blogs: function(value) {
+            console.log({ value });
+            if (value.length > 3) {
+              this.tooManyPost = true;
+            }
           }
         }
-      }
-    });
-  </script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>
