@@ -88,9 +88,55 @@
         </tbody>
       </table>
 
-      <button type="button" class="btn btn-primary">เพิ่มรายชื่อ</button>
-      <button type="button" class="btn btn-success float-right">บันทึก</button>
+      <button type="button" class="btn btn-primary" onclick="add()">เพิ่มรายชื่อ</button>
+      <button type="button" class="btn btn-success float-right" onclick="save()">บันทึก</button>
       <hr />
+      <script>
+        function save(){
+
+         let temp = document.querySelector('form-control').map(function(value){
+          return (this).value;
+         });
+
+         console.log(temp);
+        }
+        function add(){
+          let tr = document.createElement("tr");
+          let td1 = document.createElement("td");
+          let input1 = document.createElement('input');
+          input1.setAttribute('class', 'form-control');
+          let td2 = document.createElement("td");
+          let input2 = document.createElement('input');
+          input2.setAttribute('class', 'form-control');
+          let td3 = document.createElement("td");
+          let input3 = document.createElement('input');
+          input3.setAttribute('class', 'form-control');
+          let td4 = document.createElement("td");
+          let button = document.createElement('button');
+          button.setAttribute('class', 'btn btn-danger');
+          button.setAttribute('onclick', 'remove(event)');
+          button.innerHTML = "&times;";
+
+
+          td1.appendChild(input1);
+          td2.appendChild(input2);
+          td3.appendChild(input3);
+          td4.appendChild(button);
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+          tr.appendChild(td4);
+          document.querySelector("body > div > table > tbody").appendChild(tr);
+        }
+      
+
+
+
+      function remove(event){
+        event.target.parentElement.parentElement.remove();
+        console.log(event);
+      }
+      </script>
 
       <h4>โจทย์</h4>
       <ol id="list">

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Lab_midterm</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <nav-bar @get-search="getSearch"></nav-bar>
+      <div class="container mt-3">
+        <p>{{ searchValue }}</p>
+        <div class="row">
+          <div class="col-4 my-4" v-for="blog in blogs" v-if="blog.isShow">
+            <blog :blog="blog" @show-comment="showComment(blog)"></blog>
+          </div>
+        </div>
+        <form-blog
+          @get-title="getTitle"
+          @get-text="getText"
+          @get-comment="getComment"
+          @create-blog="createBlog()"
+        ></form-blog>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="card.js"></script>
+    <script src="nav-bar.js"></script>
+    <script src="form-blog.js"></script>
+
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          title: "",
+          text: "",
+          comment: "",
+          search: "",
+          blogs: [
+            {
+              title: "text",
+              text:
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, error architecto? Corporis vero, eum accusamus, unde maxime laboriosam iusto esse perspiciatis exercitationem et rerum autem qui dolore earum ut eos",
+              comment:
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+              show: false,
+              isShow: true
+            },
+            {
+              title: "13214wqe",
+              text: "qwedqwqd",
+              comment:
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+              show: false,
+              isShow: true
+            }
+          ]
+        },
+        methods: {
+          showComment(blog) {
+            console.log(blog);
+            blog.show = !blog.show;
+          },
+          getTitle(title) {
+            this.title = title;
+          },
+          getText(text) {
+            this.text = text;
+          },
+          getComment(comment) {
+            this.comment = comment;
+          },
+          getSearch(search) {
+            console.log(search);
+            this.search = search;
+          },
+          createBlog() {
+            let obj = {
+              title: this.title,
+              text: this.text,
+              comment: this.comment,
+              show: false,
+              isShow: true
+            };
+
+            this.blogs.push(obj);
+          }
+        },
+        computed: {
+          searchValue: function() {
+            let _self = this;
+            this.blogs.map(function(blog) {
+              if (
+                blog.title.toLowerCase().includes(_self.search.toLowerCase())
+              ) {
+                return (blog.isShow = true);
+              } else {
+                return (blog.isShow = false);
+              }
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

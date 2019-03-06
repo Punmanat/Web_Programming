@@ -19,47 +19,63 @@
     <title>Add Html Element</title>
   </head>
   <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">JS Exercises</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="01-js-can-handle-event.html">Exercise 1</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="02-js-can-chage-css.html">Exercise 2</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="03-js-can-change-text.html">Exercise 3</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="04-js-array1.html">Exercise 4</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="05-js-array2.html">Exercise 5</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="06-js-can-add-element.html">Exercise 6</a>
-              </li>
-              <li class="nav-item active">
-                  <a class="nav-link" href="07-js-can-remove-element.html">Exercise 7</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="08-js-todo-list-example.html">Exercise 8</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="09-data-table-problem.html">Exercise 9</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">JS Exercises</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="01-js-can-handle-event.html"
+              >Exercise 1</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="02-js-can-chage-css.html">Exercise 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="03-js-can-change-text.html">Exercise 3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="04-js-array1.html">Exercise 4</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="05-js-array2.html">Exercise 5</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="06-js-can-add-element.html">Exercise 6</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="07-js-can-remove-element.html"
+              >Exercise 7</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="08-js-todo-list-example.html"
+              >Exercise 8</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="09-data-table-problem.html">Exercise 9</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <div class="container">
-      <blockquote class="blockquote text-center" >
-          <h1 class="mt-5">Exercise 7</h1>
-        <footer class="blockquote-footer mb-5">Javascript สามารถเพิ่ม tag html ได้</footer>
+      <blockquote class="blockquote text-center">
+        <h1 class="mt-5">Exercise 7</h1>
+        <footer class="blockquote-footer mb-5">
+          Javascript สามารถเพิ่ม tag html ได้
+        </footer>
       </blockquote>
 
       <hr />
@@ -72,8 +88,7 @@
         <li>item 4</li>
         <li>item 5</li>
       </ul>
-      <hr>
-
+      <hr />
 
       <h4>ลองทำ: ลบ &lt;li&gt; สุดท้ายจาก &lt;ul&gt;</h4>
       <ul id="list">
@@ -91,7 +106,6 @@
           <code title="ถ้าพิมพ์จะจำได้มากกว่านะ">
             let parent = last_item.parentElement
           </code>
-          
         </li>
 
         <li>
@@ -99,11 +113,9 @@
           <code title="ถ้าพิมพ์จะจำได้มากกว่านะ">
             parent.removeChild(last_item)
           </code>
-          
         </li>
-
       </ul>
-      <hr>
+      <hr />
 
       <h4>ลองทำ: ลบ &lt;li&gt; ตัวที่ 2 จาก &lt;ul&gt;</h4>
       <ul id="list">
@@ -112,7 +124,8 @@
         <li>
           พิมพ์
           <code title="ถ้าพิมพ์จะจำได้มากกว่านะ">
-            let second_item = document.querySelector('ul#example > li:nth-child(2)')
+            let second_item = document.querySelector('ul#example >
+            li:nth-child(2)')
           </code>
         </li>
 
@@ -121,40 +134,42 @@
           <code title="ถ้าพิมพ์จะจำได้มากกว่านะ">
             second_item.remove()
           </code>
-          
         </li>
       </ul>
-      <hr>
+      <hr />
 
       <h4>แบบฝึกหัด</h4>
       <ol>
         <li>เปิดไฟล์ <code>05-js-can-remove-element.html</code></li>
-        <li>แก้ไขปุ่ม <button id='removeFirst'>Remove first item</button> โดยเมื่อกดปุ่มแล้วจะลบ &lt;li&gt; ตัวแรกใน Example list</li>
-
+        <li>
+          แก้ไขปุ่ม
+          <button id="removeFirst">Remove first item</button>
+          โดยเมื่อกดปุ่มแล้วจะลบ &lt;li&gt; ตัวแรกใน Example list
+        </li>
       </ol>
-      <hr>
+      <hr />
       <script>
-        document.getElementById('removeFirst').addEventListener('click',()=>{
-          document.querySelector('#example > li:nth-child(1)').remove();
-        })
+        document.getElementById("removeFirst").addEventListener("click", () => {
+          document.querySelector("#example > li:nth-child(1)").remove();
+        });
       </script>
       <h4>ลับสมอง</h4>
       <ol>
-        <li>แก้ไขปุ่ม <button id='removeAll'>Remove all</button> โดยเมื่อกดปุ่มให้ลบ &lt;li&gt; ทั้งหมดใน Example list</li>
-
+        <li>
+          แก้ไขปุ่ม
+          <button id="removeAll">Remove all</button> โดยเมื่อกดปุ่มให้ลบ
+          &lt;li&gt; ทั้งหมดใน Example list
+        </li>
       </ol>
-      <hr>
+      <hr />
       <script>
-          document.getElementById('removeAll').addEventListener('click',()=>{
-            let len = document.querySelector('#example').childNodes.length;
-            for(let i=0; i<len; i++){
-              if(document.querySelector('#example > li:nth-child(1)') == null){
-                break;
-              }
-              document.querySelector('#example > li:nth-child(1)').remove();
-            }
-          });
-        </script>
+        document.getElementById("removeAll").addEventListener("click", () => {
+          let len = document.querySelector("#example").childNodes.length;
+          for (let i = 0; i < len; i++) {
+            document.querySelector("#example > li:nth-child(1)").remove();
+          }
+        });
+      </script>
     </div>
   </body>
 </html>
