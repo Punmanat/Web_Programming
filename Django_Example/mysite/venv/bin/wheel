@@ -1,4 +1,4 @@
-#!/Users/punmanat/Desktop/Web_Programming/Django_Example/mysite/venv/bin/python
+#!/Users/punmanat/Desktop/Web_Programming/Django_Example/mysite/venv/bin/python3.6
 # -*- coding: utf-8 -*-
 import re
 import sys

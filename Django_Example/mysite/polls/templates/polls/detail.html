@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,12 +7,40 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Detail</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
-<h1>Poll {{ list.title }} ({{ len_q }} คำถาม)</h1>
-{% for i in list.questions %}
-    <h1>{{ i }}</h1>
-{% endfor %}
+<div class="container">
+    <h1>Poll {{ list.title }} ({{ len_q }} คำถาม)</h1>
+    <ol>
+        {% for i in list.questions %}
+            <div class="card p-4 mb-2" style="width: 50%">
+                <li>
+                    <h4 class="card-title">
+                        {{ i.text }}
+                    </h4>
+                    <div class="card-body">
+                        <ul>
+                            {% for j in i.choices %}
+                                <li>{{ j.text }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            </div>
+
+        {% endfor %}
+    </ol>
+    <div class="float-right">
+        <a href="{% url 'index' %}" class="btn btn-danger">กลับหน้าแรก</a>
+        <a href="#" class="btn btn-success ml-3">บันทึก</a>
+    </div>
+    <br>
+    <br>
+</div>
+
+</ol>
+
 
 </body>
 </html>

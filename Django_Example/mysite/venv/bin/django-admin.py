@@ -1,4 +1,4 @@
-#!/Users/punmanat/Desktop/Web_Programming/Django_Example/mysite/venv/bin/python
+#!/Users/punmanat/Desktop/Web_Programming/Django_Example/mysite/venv/bin/python3.6
 from django.core import management
 
 if __name__ == "__main__":
