@@ -148,7 +148,8 @@ from django.shortcuts import render
 
 
 # Create your views here.
-from polls.models import Poll, Question, Answer
+from .forms import PollForm
+from .models import Poll, Question, Answer
 
 
 def index(req):
@@ -191,3 +192,30 @@ def details(req, poll_id):
                     question_id=question.id
                 )
     return render(req, 'polls/detail.html', context={'poll':poll})
+
+
+def create(req):
+    if(req.method == 'POST'):
+        form = PollForm(req.POST)
+
+        if form.is_valid():
+            poll = Poll.objects.create(
+                title=form.cleaned_data.get('title'),
+                start_date=form.cleaned_data.get('start_date'),
+                end_date=form.cleaned_data.get('end_date'),
+
+            )
+        for i in range(1, form.cleaned_data.get('no_question')+1):
+            Question.objects.create(
+                text='Q'+str(i),
+                type='01',
+                poll=poll
+
+            )
+    else:
+        form = PollForm()
+    context = {
+        'form' : form
+    }
+
+    return render(req, 'polls/create.html' ,context=context)
